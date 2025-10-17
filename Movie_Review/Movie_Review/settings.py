@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "Review",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,19 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "Movie_Review.urls"
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+
 
 TEMPLATES = [
     {
@@ -74,10 +89,15 @@ WSGI_APPLICATION = "Movie_Review.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "movie_api",
+        'USER': 'root',
+        'PASSWORD': 'Wallet',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
